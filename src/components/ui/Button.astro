@@ -1,0 +1,61 @@
+---
+// Props to customize the button
+interface Props {
+    label: string;  // Text displayed on the button
+    type?: "button" | "submit" | "reset";   // Button type
+    variant?: "primary" | "secondary";  // Button style variant
+    disabled?: boolean; // Disabled state
+    onClick?: (event: MouseEvent) => void;  // Click handler
+}
+
+// Default prop values
+const {
+    label,
+    type = "button",
+    variant = "primary",
+    disabled = false,
+    onClick
+} = Astro.props;
+---
+
+<button
+    type={type}
+    class={`btn ${variant} ${disabled ? "disabled" : ""}`}
+    disabled={disabled}
+    onclick={onClick ? `() => onClick(event)` : null}
+>
+    {label}
+</button>
+
+<style>
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn.primary {
+        background-color: #1d4ed8;
+        color: white;
+    }
+
+    .btn.primary:hover:not(.disabled) {
+        background-color: #2563eb;
+    }
+
+    .btn.secondary {
+        color: white;
+        background-color: black;
+    }
+
+    .btn.secondary:hover:not(.disabled) {
+        background-color: darkgray;
+    }
+
+    .btn.disbaled {
+
+    }
+</style>

@@ -1,11 +1,25 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import Header from '../components/Header.astro';
+import NavigationBar from '../components/layout/NavigationBar.astro';
+import HeroSectionImage from '../images/HeroSection3.jpg'
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Home - NG Leather">
 	<main>
-		<Header></Header>
+		<NavigationBar></NavigationBar>
+		<Image class="hero-section-image" src={HeroSectionImage} alt="Image for hero section."/>
 	</main>
 </Layout>
+
+<style>
+	.hero-section-image {
+		position: absolute;
+    	top: 0;
+    	left: 0;
+    	width: 100vw;
+    	height: 100vh;
+    	object-fit: cover;
+    	z-index: -1; /* Send it to the background if necessary */
+	}
+</style>
